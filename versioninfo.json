@@ -1,0 +1,38 @@
+{
+  "FixedFileInfo": {
+    "FileVersion": {
+      "Major": 1,
+      "Minor": 0,
+      "Patch": 0,
+      "Build": 0
+    },
+    "ProductVersion": {
+      "Major": 1,
+      "Minor": 0,
+      "Patch": 0,
+      "Build": 0
+    },
+      "FileFlagsMask": "63",
+      "FileFlags": "0",
+      "FileOS": "262148",
+      "FileType": "1",
+      "FileSubtype": "0"
+  },
+  "StringFileInfo": {
+    "CompanyName": "c55math4833",
+    "FileDescription": "SwingWinGo",
+    "FileVersion": "1.0.0.0",
+    "InternalName": "SwingWinGo.exe",
+    "OriginalFilename": "SwingWinGo.exe",
+    "ProductName": "SwingWinGo",
+    "ProductVersion": "1.0.0.0",
+    "LegalCopyright": "Copyright (c) 2026 c55math4833",
+    "Comments": "Author: c55math4833"
+  },
+  "VarFileInfo": {
+    "Translation": {
+      "LangID": 1033,
+      "CharsetID": 1200
+    }
+  }
+}
