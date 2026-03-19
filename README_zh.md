@@ -2,7 +2,7 @@
 
 **SwingWinGo** 是一個 Windows 平台的趣味工具，可以讓使用者把桌面上的視窗用「鞦韆」方式擺動（橫向、縱向、圓形、橢圓、8 字形），據說有助於緩解長時間使用電腦的視覺疲勞，並可選擇同時移動游標位置。
 
-> 本專案為以 Go 重新實作的版本，靈感來源於 Central Fixation（https://www.central-fixation.com/）。因為原始下載連結已無法使用，本專案以開源方式提供。
+> 本專案為以 Go 重新實作的版本，靈感來源於 [Central Fixation](https://www.central-fixation.com/)。因為原始下載連結已無法使用，本專案以開源方式提供。
 ---
 
 ## 🛠 系統需求

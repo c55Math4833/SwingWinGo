@@ -2,6 +2,8 @@
 
 **SwingWinGo** is a fun Windows utility that lets you swing desktop windows like a “swing” (horizontal, vertical, circle, ellipse, figure-eight). It's said to help reduce visual fatigue from long periods of screen use, and you can optionally move the cursor along with the target window.
 
+> This project is a Go reimplementation inspired by [Central Fixation](https://www.central-fixation.com/). Since the original download link is no longer available, this project is provided as open source.
+
 > This is an English translation of the original `README_zh.md`. The canonical Chinese version is maintained in `README_zh.md`.
 
 ---
