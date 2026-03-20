@@ -23,8 +23,11 @@ var (
 	procSetCursorPos             = user32.NewProc("SetCursorPos")
 	procGetWindowThreadProcessId = user32.NewProc("GetWindowThreadProcessId")
 	procGetAsyncKeyState         = user32.NewProc("GetAsyncKeyState")
+	procIsIconic                 = user32.NewProc("IsIconic")
+	procIsZoomed                 = user32.NewProc("IsZoomed")
+	procGetSystemMetrics         = user32.NewProc("GetSystemMetrics")
 
-	// 新增用於碰撞與遮擋偵測的 API
+	// 新增用於碰撞與遮蔽物偵測的 API
 	procWindowFromPoint = user32.NewProc("WindowFromPoint")
 	procGetAncestor     = user32.NewProc("GetAncestor")
 
@@ -200,11 +203,44 @@ func SetCursorPos(x, y int32) error {
 }
 
 // IsMouseButtonPressed 檢查滑鼠左鍵或右鍵是否正被按下
+const (
+	SM_CXSCREEN = 0
+	SM_CYSCREEN = 1
+)
+
 func IsMouseButtonPressed() bool {
 	l, _, _ := procGetAsyncKeyState.Call(uintptr(0x01)) // VK_LBUTTON
 	r, _, _ := procGetAsyncKeyState.Call(uintptr(0x02)) // VK_RBUTTON
 	// GetAsyncKeyState 回傳值的最高位元(MSB)若為 1，表示按鍵當下處於按下狀態
 	return (l&0x8000 != 0) || (r&0x8000 != 0)
+}
+
+func IsWindowMinimized(hwnd uintptr) bool {
+	ret, _, _ := procIsIconic.Call(hwnd)
+	return ret != 0
+}
+
+func IsWindowMaximized(hwnd uintptr) bool {
+	ret, _, _ := procIsZoomed.Call(hwnd)
+	return ret != 0
+}
+
+func GetSystemMetrics(index int32) int32 {
+	ret, _, _ := procGetSystemMetrics.Call(uintptr(index))
+	return int32(ret)
+}
+
+func IsWindowFullScreen(hwnd uintptr) bool {
+	rect, err := GetWindowRect(hwnd)
+	if err != nil {
+		return false
+	}
+
+	sw := GetSystemMetrics(SM_CXSCREEN)
+	sh := GetSystemMetrics(SM_CYSCREEN)
+
+	// 若超過螢幕大致範圍視為全螢幕（含隱藏工作列）
+	return rect.Left <= 0 && rect.Top <= 0 && rect.Right >= sw && rect.Bottom >= sh
 }
 
 // WindowFromPoint retrieves a handle to the window that contains the specified point.
